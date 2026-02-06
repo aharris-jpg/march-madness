@@ -1,0 +1,473 @@
+<section id="an-march-madness-bracket">
+  <style>
+    /* Scoped to #an-march-madness-bracket only */
+    #an-march-madness-bracket{
+      --bg-dark:#0b0f14;
+      --ink:#1e1f24;
+      --muted:#4a4f5a;
+
+      --accent:#2bdc8a;      /* green */
+      --accent-2:#6a5cff;    /* purple */
+      --gold:#f6c25a;
+
+      --paper:#ffffff;
+      --paper-2:#fbfbfd;
+
+      font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
+      margin:0;
+      padding:0;
+      color: var(--ink);
+      background: var(--bg-dark);
+    }
+    #an-march-madness-bracket *{ box-sizing:border-box; }
+
+    /* HERO */
+    #an-march-madness-bracket .an-hero{
+      position:relative;
+      overflow:hidden;
+      padding: 5rem 1.5rem 4rem;
+      color:#fff;
+      background:
+        radial-gradient(circle at 14% 0%, rgba(43,220,138,.22), transparent 60%),
+        radial-gradient(circle at 88% 14%, rgba(106,92,255,.18), transparent 60%),
+        linear-gradient(145deg, #070a0f 0%, #0b1220 55%, #06070a 100%);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    #an-march-madness-bracket .an-hero-inner{
+      position:relative;
+      z-index:1;
+      max-width: 920px;
+      margin: 0 auto;
+      text-align:center;
+    }
+    #an-march-madness-bracket .an-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:.55rem;
+      padding:.35rem .85rem;
+      border-radius:999px;
+      border:1px solid rgba(43,220,138,.60);
+      background: rgba(0,0,0,.28);
+      color: #d9ffe9;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-size: .75rem;
+      margin-bottom: 1.1rem;
+    }
+    #an-march-madness-bracket .an-hero-img-wrap{
+      max-width: 860px;
+      margin: 0 auto 2rem;
+    }
+    #an-march-madness-bracket .an-hero-img{
+      width:100%;
+      height:auto;
+      display:block;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.12);
+      box-shadow: 0 18px 48px rgba(0,0,0,.60);
+      background: rgba(255,255,255,.03);
+    }
+    #an-march-madness-bracket .an-hero-title{
+      margin:0 0 1rem;
+      font-size: 2.7rem;
+      line-height:1.12;
+      letter-spacing:-.02em;
+    }
+    #an-march-madness-bracket .an-hero-lede{
+      margin: 0 auto 2rem;
+      max-width: 760px;
+      font-size: 1.15rem;
+      line-height: 1.65;
+      color: rgba(255,255,255,.88);
+    }
+
+    /* BUTTONS */
+    #an-march-madness-bracket .an-actions{
+      display:flex;
+      justify-content:center;
+      gap:.9rem;
+      flex-wrap:wrap;
+      margin-top:.25rem;
+    }
+    #an-march-madness-bracket .an-btn{
+      display:inline-block;
+      padding: .9rem 1.65rem;
+      border-radius: 999px;
+      font-weight: 700;
+      text-decoration:none;
+      transition: .2s;
+      border: 1px solid transparent;
+      cursor:pointer;
+      white-space: nowrap;
+      font-size: 1rem;
+    }
+    #an-march-madness-bracket .an-btn-primary{
+      background: linear-gradient(135deg, var(--accent), #b8ffe1);
+      color: #06110b;
+      box-shadow: 0 10px 28px rgba(0,0,0,.45);
+    }
+    #an-march-madness-bracket .an-btn-primary:hover{
+      transform: translateY(-1px);
+      box-shadow: 0 14px 34px rgba(0,0,0,.55);
+    }
+    #an-march-madness-bracket .an-btn-ghost{
+      background: transparent;
+      color: #ffffff;
+      border-color: rgba(255,255,255,.35);
+    }
+    #an-march-madness-bracket .an-btn-ghost:hover{
+      background: rgba(255,255,255,.10);
+      border-color: rgba(255,255,255,.55);
+    }
+
+    /* MAIN (WHITE CARD) */
+    #an-march-madness-bracket .an-main{
+      max-width: 920px;
+      margin: -44px auto 0;
+      padding: 3rem 2rem 3.5rem;
+      border-radius: 18px 18px 0 0;
+      background: radial-gradient(circle at top, var(--paper) 0, var(--paper-2) 48%, #f4f6fb 100%);
+      border: 1px solid rgba(0,0,0,.08);
+      box-shadow: 0 -10px 34px rgba(0,0,0,.35);
+      position:relative;
+      color: var(--ink);
+    }
+
+    /* TYPE */
+    #an-march-madness-bracket .an-main h2{
+      margin: 2.25rem 0 1rem;
+      font-size: 1.55rem;
+      line-height: 1.25;
+      letter-spacing:-.01em;
+      color: #15161a;
+    }
+    #an-march-madness-bracket .an-main p{
+      margin:0 0 1rem;
+      font-size: 1.05rem;
+      line-height: 1.65;
+      color: var(--muted);
+    }
+    #an-march-madness-bracket .an-main p strong{ color: #15161a; }
+    #an-march-madness-bracket .an-main ul,
+    #an-march-madness-bracket .an-main ol{
+      padding-left: 1.25rem;
+      margin: 0 0 1.4rem;
+      color: var(--muted);
+    }
+    #an-march-madness-bracket .an-main li{
+      margin: 0 0 .65rem;
+      font-size: 1.05rem;
+      line-height: 1.65;
+    }
+    #an-march-madness-bracket .an-main a{
+      color: #156b47;
+      text-decoration:none;
+      border-bottom: 1px dotted rgba(21,107,71,.35);
+    }
+    #an-march-madness-bracket .an-main a:hover{
+      color: #0f4e34;
+      border-bottom-color: rgba(15,78,52,.55);
+    }
+
+    /* INFO GRID */
+    #an-march-madness-bracket .an-grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    #an-march-madness-bracket .an-card{
+      grid-column: span 6;
+      padding: 1.25rem 1.25rem 1.15rem;
+      border-radius: 18px;
+      background: rgba(255,255,255,.85);
+      border: 1px solid rgba(0,0,0,.08);
+      box-shadow: 0 14px 30px rgba(0,0,0,.08);
+    }
+    #an-march-madness-bracket .an-card h3{
+      margin:0 0 .55rem;
+      font-size: 1.08rem;
+      letter-spacing:-.01em;
+      color:#141519;
+    }
+    #an-march-madness-bracket .an-card p{
+      margin:0;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    /* NOTICE */
+    #an-march-madness-bracket .an-notice{
+      margin-top: 1.4rem;
+      padding: 1.1rem 1.2rem;
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(43,220,138,.14), rgba(43,220,138,.07));
+      border: 1px solid rgba(21,107,71,.18);
+      color: #2d3a33;
+    }
+    #an-march-madness-bracket .an-notice strong{ color:#111; }
+
+    /* CTA row on white card */
+    #an-march-madness-bracket .an-cta-row{
+      display:flex;
+      justify-content:center;
+      gap:.9rem;
+      flex-wrap:wrap;
+      margin: 1.75rem 0 2.25rem;
+    }
+    #an-march-madness-bracket .an-btn-secondary{
+      background: #ffffff;
+      color: #111;
+      border: 1px solid rgba(0,0,0,.14);
+      box-shadow: 0 10px 22px rgba(0,0,0,.10);
+    }
+    #an-march-madness-bracket .an-btn-secondary:hover{
+      transform: translateY(-1px);
+      box-shadow: 0 14px 28px rgba(0,0,0,.14);
+      border-color: rgba(0,0,0,.20);
+    }
+    #an-march-madness-bracket .an-btn-outline{
+      background: transparent;
+      color: #1b1c21;
+      border: 1px solid rgba(0,0,0,.22);
+    }
+    #an-march-madness-bracket .an-btn-outline:hover{
+      background: rgba(0,0,0,.04);
+      border-color: rgba(0,0,0,.30);
+    }
+
+    /* RELATED LINKS (bottom, natural) */
+    #an-march-madness-bracket .an-related{
+      margin-top: 2.25rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(0,0,0,.10);
+    }
+    #an-march-madness-bracket .an-related-title{
+      margin: 0 0 .65rem;
+      font-size: 1rem;
+      color: rgba(21,22,26,.80);
+      letter-spacing: .01em;
+    }
+    #an-march-madness-bracket .an-related-links{
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display:flex;
+      flex-wrap:wrap;
+      gap: .65rem .9rem;
+    }
+    #an-march-madness-bracket .an-related-links li{
+      margin:0;
+      font-size: .98rem;
+      line-height: 1.55;
+      color: rgba(30,31,36,.70);
+    }
+    #an-march-madness-bracket .an-related-links a{
+      color:#156b47;
+      border-bottom: 1px dotted rgba(21,107,71,.35);
+    }
+    #an-march-madness-bracket .an-related-note{
+      margin-top: .75rem;
+      font-size: .92rem;
+      color: rgba(30,31,36,.62);
+    }
+
+    /* FOOTER */
+    #an-march-madness-bracket .an-footer{
+      text-align:center;
+      padding: 2.25rem 1rem 3rem;
+      font-size: .9rem;
+      color: rgba(255,255,255,.65);
+      background: transparent;
+    }
+
+    @media (max-width: 980px){
+      #an-march-madness-bracket .an-hero-title{ font-size: 2.2rem; }
+      #an-march-madness-bracket .an-main{ padding: 2.3rem 1.4rem 3.2rem; margin-top: -34px; }
+      #an-march-madness-bracket .an-card{ grid-column: span 12; }
+    }
+    @media (max-width: 700px){
+      #an-march-madness-bracket .an-hero{ padding: 3.25rem 1.25rem 3rem; }
+      #an-march-madness-bracket .an-hero-title{ font-size: 2rem; }
+      #an-march-madness-bracket .an-related-links{ gap: .55rem .8rem; }
+    }
+  </style>
+
+  <!-- HERO -->
+  <div class="an-hero">
+    <div class="an-hero-inner">
+      <div class="an-badge">March Madness 2026 • Free Bracket Contest</div>
+
+      <div class="an-hero-img-wrap">
+        <img
+          src="https://media.newyorker.com/photos/67ddc105f3391eb85e3f4078/master/w_2240,c_limit/Foggatt-March-Madness-1.jpg"
+          alt="March Madness Bracket Challenge"
+          class="an-hero-img"
+          loading="lazy"
+          decoding="async"
+        >
+      </div>
+
+      <h1 class="an-hero-title">March Madness Bracket Challenge</h1>
+      <p class="an-hero-lede">
+        Submit your 2026 NCAA Men’s Tournament bracket link and compete in three categories:
+        <strong>Most Perfect</strong>, <strong>Most Imperfect</strong>, and <strong>Luckiest Unlucky</strong>.
+        No entry fee. No wagering. Just bragging rights and <strong>$1,000</strong> to each winner.
+      </p>
+
+      <div class="an-actions">
+        <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSeZwq-ZhRAYM66s8rCKBLQY8ExfJxiKt61AVCTAyjDDVAyFEA/viewform"
+          class="an-btn an-btn-primary"
+          target="_blank"
+          rel="noopener"
+        >Submit Your Bracket</a>
+
+        <a href="#an-details" class="an-btn an-btn-ghost">How It Works</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <div class="an-main" id="an-details">
+    <p><strong>Create a public bracket, paste the link, and you’re in.</strong> Winners are determined solely by the final tournament outcomes and the scores shown on the bracket platform.</p>
+
+    <div class="an-notice" role="note" aria-label="No wagering notice">
+      <strong>This is a promotional contest.</strong> There is <strong>no purchase necessary</strong>, no entry fee, and the contest does not involve betting or wagering.
+    </div>
+
+    <h2>Prizes</h2>
+    <ul>
+      <li><strong>Three (3) winners</strong> total (one per category).</li>
+      <li><strong>$1,000 USD</strong> to each winner, paid via Action Network’s standard payment process (e.g., Bill.com).</li>
+      <li>Winners may be required to complete standard payment and tax verification steps to receive the prize.</li>
+    </ul>
+
+    <div class="an-grid" aria-label="Prize categories">
+      <div class="an-card">
+        <h3>🏆 Most Perfect Bracket</h3>
+        <p>Highest total bracket score after the Championship Game concludes.</p>
+      </div>
+      <div class="an-card">
+        <h3>🥴 Most Imperfect Bracket</h3>
+        <p>Lowest total bracket score after the tournament ends.</p>
+      </div>
+      <div class="an-card">
+        <h3>🍀 “Luckiest Unlucky” Bracket</h3>
+        <p>Score closest to a predefined benchmark score (set internally prior to launch).</p>
+      </div>
+      <div class="an-card">
+        <h3>✅ Objective scoring</h3>
+        <p>Final scores are taken directly from each entrant’s public bracket link on the third-party platform.</p>
+      </div>
+    </div>
+
+    <h2>How to Enter</h2>
+    <ol>
+      <li>Create your bracket on a third-party platform (e.g., ESPN / CBS / Yahoo) and make it <strong>public</strong>.</li>
+      <li>Submit <strong>one (1)</strong> entry via the official form and include your <strong>public bracket link</strong>.</li>
+      <li>Keep your bracket public and viewable through <strong>April 6, 2026</strong>.</li>
+    </ol>
+
+    <div class="an-cta-row">
+      <a
+        href="https://docs.google.com/forms/d/e/1FAIpQLSeZwq-ZhRAYM66s8rCKBLQY8ExfJxiKt61AVCTAyjDDVAyFEA/viewform"
+        class="an-btn an-btn-secondary"
+        target="_blank"
+        rel="noopener"
+      >Enter the Challenge</a>
+      <a href="#an-dates" class="an-btn an-btn-outline">Key Dates</a>
+    </div>
+
+    <h2 id="an-dates">Key Dates (2026)</h2>
+    <ul>
+      <li><strong>Contest period:</strong> March 15, 2026 – April 6, 2026</li>
+      <li><strong>Selection Sunday (official bracket announced):</strong> Sunday, March 15, 2026</li>
+      <li><strong>Submission window opens:</strong> Sunday, March 15, 2026 (after the official bracket announcement)</li>
+      <li><strong>Submission window closes:</strong> Tuesday, March 17, 2026 (prior to the start of the first tournament game)</li>
+      <li><strong>Bracket lock:</strong> At the official tip-off time of the first NCAA tournament game</li>
+      <li><strong>Tournament play:</strong> March 17 – April 6, 2026</li>
+      <li><strong>Winner determination:</strong> After the Championship Game concludes on April 6, 2026</li>
+      <li><strong>Winner notification:</strong> Within seven (7) days (no later than April 13, 2026)</li>
+    </ul>
+
+    <h2>Eligibility</h2>
+    <ul>
+      <li>Open to <strong>U.S. residents</strong> only.</li>
+      <li>Must be <strong>18+</strong> at the time of entry.</li>
+      <li><strong>No purchase necessary.</strong></li>
+      <li><strong>One (1)</strong> bracket submission per person.</li>
+      <li>Employees of Action Network and affiliated companies are not eligible.</li>
+    </ul>
+
+    <h2>Scoring &amp; Winner Selection</h2>
+    <ul>
+      <li>Bracket scoring follows the scoring system displayed by the third-party bracket platform.</li>
+      <li>Final scores are taken directly from each participant’s public bracket link after the tournament concludes.</li>
+      <li>Winners are determined objectively based on:
+        <ul>
+          <li>Highest score (Most Perfect)</li>
+          <li>Lowest score (Most Imperfect)</li>
+          <li>Closest to the predefined benchmark score (Luckiest Unlucky)</li>
+        </ul>
+      </li>
+      <li>If needed, tie-breakers may include championship pick accuracy, Final Four accuracy, or entry submission timestamp.</li>
+      <li>Action Network’s decisions regarding eligibility, scoring, and winner determination are final and binding.</li>
+    </ul>
+
+    <h2>Winner Publicity (Optional)</h2>
+    <p>
+      Winners may be invited (but are not required) to participate in reasonable promotional activity,
+      such as allowing Action Network to reference their first name, winning category, or bracket outcome in editorial or promotional content.
+      Participation is optional and not a condition of receiving the prize.
+    </p>
+
+    <h2>Terms &amp; Conditions</h2>
+    <p>
+      <strong>Official rules:</strong>
+      <a href="https://YOUR-TC-LINK-HERE" target="_blank" rel="noopener">March Madness Bracket Challenge Terms &amp; Conditions</a>
+    </p>
+
+    <h2>Disclaimer</h2>
+    <p>
+      This contest is not sponsored, endorsed, or administered by, or associated with the NCAA or any third-party bracket platform.
+      All trademarks are the property of their respective owners.
+    </p>
+
+    <div class="an-cta-row">
+      <a
+        href="https://docs.google.com/forms/d/e/1FAIpQLSeZwq-ZhRAYM66s8rCKBLQY8ExfJxiKt61AVCTAyjDDVAyFEA/viewform"
+        class="an-btn an-btn-secondary"
+        target="_blank"
+        rel="noopener"
+      >Submit Your Bracket Link</a>
+      <a
+        href="#"
+        class="an-btn an-btn-outline"
+        onclick="document.querySelector('#an-march-madness-bracket')?.scrollIntoView({behavior:'smooth'}); return false;"
+      >Back to Top</a>
+    </div>
+
+    <!-- RELATED LINKS (natural, at bottom) -->
+    <div class="an-related" aria-label="Related Action Network links">
+      <p class="an-related-title"><strong>Explore more from Action Network</strong></p>
+      <ul class="an-related-links">
+        <li><a href="https://www.actionnetwork.com/online-sports-betting/reviews" target="_blank" rel="noopener">Best Betting Sites</a></li>
+        <li><a href="https://www.actionnetwork.com/online-sports-betting/reviews/draftkings/" target="_blank" rel="noopener">DraftKings Promo Code</a></li>
+        <li><a href="https://www.actionnetwork.com/online-sports-betting/reviews/fanduel" target="_blank" rel="noopener">FanDuel Promo Code</a></li>
+      </ul>
+      <p class="an-related-note">
+        Note: The bracket challenge above is a free promotional contest (no wagering). The links here are separate informational resources.
+      </p>
+    </div>
+
+    <p style="margin-top:1.25rem; font-size:.95rem; color: rgba(30,31,36,.65);">
+      <em>Official rules will be posted before the submission window opens.</em>
+    </p>
+  </div>
+
+  <div class="an-footer">
+    &copy; 2026 Action Network. All rights reserved.
+  </div>
+</section>
